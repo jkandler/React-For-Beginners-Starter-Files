@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import Header from './Header';
 import Order from './Order';
 import Inventory from './Inventory';
@@ -11,6 +12,10 @@ class App extends React.Component {
     fishes: {},
     order: {}
   };
+
+  static propTypes = {
+    match: PropTypes.object
+  }
 
   componentDidMount() {
     const {params} = this.props.match;
@@ -48,7 +53,7 @@ class App extends React.Component {
 
   updateFish = (key, updatedFish) => {
     // take a copy of the current state
-    const fishes = {... this.state.fishes}
+    const fishes = {...this.state.fishes}
     //update that state
     fishes[key] = updatedFish;
     // set that to state
